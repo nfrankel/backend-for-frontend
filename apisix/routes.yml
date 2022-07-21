@@ -1,0 +1,7 @@
+routes:
+  - uri: /*
+    upstream:
+      type: roundrobin
+      nodes:
+        "monolith:5000": 1
+#END
