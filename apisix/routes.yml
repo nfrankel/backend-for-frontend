@@ -7,10 +7,6 @@ upstreams:
     type: roundrobin
     nodes:
       "news:5002": 1
-  - id: 3
-    type: roundrobin
-    nodes:
-      "bff:5000": 1
 routes:
   - uri: /products
     upstream_id: 1
@@ -27,5 +23,7 @@ routes:
       proxy-rewrite:
         uri: /info
   - uri: /
-    upstream_id: 3
+    plugins:
+      bff: []
+      public-api: []
 #END

@@ -5,9 +5,12 @@ services:
     volumes:
       - ./apisix/config.yml:/usr/local/apisix/conf/config.yaml:ro
       - ./apisix/routes.yml:/usr/local/apisix/conf/apisix.yaml:ro
+      - ./bff_plugin/init.lua:/opt/apisix/plugins/bff.lua:ro
     ports:
       - "9080:9080"
       - "9090:9090"
+    environment:
+      - GATEWAY_PORT=9080
   catalog:
     build: ./catalog
     ports:
@@ -16,10 +19,3 @@ services:
     build: ./news
     ports:
       - "5002:5002"
-  bff:
-    build: ./bff
-    ports:
-      - "5000:5000"
-    environment:
-      - GATEWAY_ROOT=http://apisix:9080
-
