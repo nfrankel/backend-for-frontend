@@ -2,3 +2,9 @@ deployment:
   role: data_plane
   role_data_plane:
     config_provider: yaml
+apisix:
+  extra_lua_path: "/opt/?.lua"
+plugins:
+  - proxy-rewrite         # priority: 1008
+  - public-api            # priority:  501
+  - bff                   # priority:  100
