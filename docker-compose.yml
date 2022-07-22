@@ -7,5 +7,7 @@ services:
       - ./apisix/routes.yml:/usr/local/apisix/conf/apisix.yaml:ro
     ports:
       - "9080:9080"
-  monolith:
-    build: ./monolith
+  catalog:
+    build: ./catalog
+  news:
+    build: ./news
