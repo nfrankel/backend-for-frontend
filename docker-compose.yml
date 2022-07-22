@@ -11,3 +11,7 @@ services:
     build: ./catalog
   news:
     build: ./news
+  bff:
+    build: ./bff
+    environment:
+      - GATEWAY_ROOT=http://apisix:9080
