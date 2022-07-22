@@ -1,7 +1,25 @@
+upstreams:
+  - id: 1
+    type: roundrobin
+    nodes:
+      "catalog:5001": 1
+  - id: 2
+    type: roundrobin
+    nodes:
+      "news:5002": 1
 routes:
-  - uri: /*
-    upstream:
-      type: roundrobin
-      nodes:
-        "monolith:5000": 1
+  - uri: /products
+    upstream_id: 1
+  - uri: /catalog/info
+    upstream_id: 1
+    plugins:
+      proxy-rewrite:
+        uri: /info
+  - uri: /news
+    upstream_id: 2
+  - uri: /news/info
+    upstream_id: 2
+    plugins:
+      proxy-rewrite:
+        uri: /info
 #END
