@@ -8,7 +8,11 @@ services:
     ports:
       - "9080:9080"
       - "9090:9090"
-  monolith:
-    build: ./monolith
+  catalog:
+    build: ./catalog
     ports:
-      - "5000:5000"
+      - "5001:5001"
+  news:
+    build: ./news
+    ports:
+      - "5002:5002"
